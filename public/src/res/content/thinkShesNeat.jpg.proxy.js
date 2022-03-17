@@ -1,0 +1,1 @@
+export default "/src/res/content/thinkShesNeat.jpg";
