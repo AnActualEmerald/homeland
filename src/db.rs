@@ -51,6 +51,14 @@ pub fn update_title(p_title: String, n_title: String, conn: DbConn) -> Result<Pr
         .get_result(&*conn)
 }
 
+pub fn delete_proj(p_title: String, conn: DbConn) -> Result<usize, Error> {
+    use schema::projects;
+    use schema::projects::dsl::title;
+    diesel::delete(projects::table)
+        .filter(title.eq(p_title))
+        .execute(&*conn)
+}
+
 pub fn init_pool() -> Pool {
     let manager = ConnectionManager::<PgConnection>::new(database_url());
     Pool::new(manager).expect("couldn't make db pool")
