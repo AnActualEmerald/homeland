@@ -10,6 +10,15 @@ table! {
 }
 
 table! {
+    projects (title) {
+        title -> Varchar,
+        short_desc -> Varchar,
+        long_desc -> Text,
+        repo -> Varchar,
+    }
+}
+
+table! {
     users (id) {
         id -> Int8,
         username -> Varchar,
@@ -20,5 +29,6 @@ table! {
 
 allow_tables_to_appear_in_same_query!(
     posts,
+    projects,
     users,
 );
